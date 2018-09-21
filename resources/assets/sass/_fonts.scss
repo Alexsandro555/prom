@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'pf_beausans_probold';
+  src: url('#{$fontsPath}/pfbeausanspro-bold_0-webfont.eot');
+  src: url('#{$fontsPath}/pfbeausanspro-bold_0-webfont.eot?#iefix') format('embedded-opentype'),
+  url('#{$fontsPath}/pfbeausanspro-bold_0-webfont.woff2') format('woff2'),
+  url('#{$fontsPath}/pfbeausanspro-bold_0-webfont.woff') format('woff'),
+  url('#{$fontsPath}/PFBeauSansPro-Bold_0.otf') format('opentype'),
+  url('#{$fontsPath}/pfbeausanspro-bold_0-webfont.ttf') format('truetype'),
+
+  url('#{$fontsPath}/pfbeausanspro-bold_0-webfont.svg#pf_beausans_probold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+
+}
+@font-face {
+  font-family: 'pf_beausans_prosemibold';
+  src: url('#{$fontsPath}/pfbeausanspro-semibold_0-webfont.eot');
+  src: url('#{$fontsPath}/pfbeausanspro-semibold_0-webfont.eot?#iefix') format('embedded-opentype'),
+  url('#{$fontsPath}/pfbeausanspro-semibold_0-webfont.woff2') format('woff2'),
+  url('#{$fontsPath}/pfbeausanspro-semibold_0-webfont.woff') format('woff'),
+  url('#{$fontsPath}/pfbeausanspro-semibold_0-webfont.ttf') format('truetype'),
+  url('#{$fontsPath}/pfbeausanspro-semibold_0-webfont.svg#pf_beausans_prosemibold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+
+}
