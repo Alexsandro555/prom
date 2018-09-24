@@ -7,7 +7,7 @@ window.Vue = require('vue');
 import Vuex from 'vuex';
 Vue.use(Vuex);
 
-
+Vue.component('leader-detail-image', require('./components/leader-detail-image'));
 
 
 const app = new Vue({

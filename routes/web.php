@@ -15,6 +15,11 @@
 Route::get('/', ['uses' => 'main\MainController@index', 'as' => 'main']);
 Route::get('/catalog/{slug}', ['uses' => 'main\MainController@catalogTypes', 'as' => 'catalog']);
 
+Route::get('/figure', function() {
+  $figure = new App\Classes\VibratorsFigureClass;
+  $figure->make();
+});
+
 
 
 Route::get('/login', ['uses' => 'main\MainController@login', 'as' => 'login']);
@@ -70,7 +75,10 @@ Route::get('/files', function() {
   dd($filteredResult);
 });
 
+// Изображения продукта
+Route::get('product-images/{id}', ['uses' => 'main\MainController@images', 'as' => 'product-images']);
 
-Route::get('/{slug}', ['uses' => 'MainController@catalogTypes', 'as'=> 'catalog-products']);
+
+Route::get('/{slug}', ['uses' => 'main\MainController@catalogTypes', 'as'=> 'catalog-products']);
 
 

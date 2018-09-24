@@ -10,8 +10,8 @@ namespace App\Classes;
 
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\ImageManager;
-use Leader\UploadFile\Models\File;
-use App\Product;
+use Modules\Files\Entities\File;
+use Modules\Catalog\Entities\Product;
 
 class Photos
 {
@@ -83,7 +83,7 @@ class Photos
       foreach ($products as $product) {
         $file = new File;
         $file->fileable_id = $product->id;
-        $file->fileable_type = "App\Product";
+        $file->fileable_type = Product::class;
         $file->original_name = $photo->photo;
         $file->config = $config;
         $file->type_file_id = 2;
@@ -97,7 +97,7 @@ class Photos
       foreach ($products as $product) {
         $file = new File;
         $file->fileable_id = $product->id;
-        $file->fileable_type = "App\Product";
+        $file->fileable_type = Product::class;
         $file->original_name = $photo->photo;
         $file->config = $config;
         $file->type_file_id = 2;
@@ -173,7 +173,7 @@ class Photos
       foreach ($products as $product) {
         $file = new File;
         $file->fileable_id = $product->id;
-        $file->fileable_type = "App\Product";
+        $file->fileable_type = Product::class;
         $file->original_name = $photo->photo;
         $file->config = $config;
         $file->type_file_id = 2;
@@ -187,7 +187,7 @@ class Photos
       foreach ($products as $product) {
         $file = new File;
         $file->fileable_id = $product->id;
-        $file->fileable_type = "App\Product";
+        $file->fileable_type = Product::class;
         $file->original_name = $photo->photo;
         $file->config = $config;
         $file->type_file_id = 2;
@@ -263,7 +263,7 @@ class Photos
       foreach ($products as $product) {
         $file = new File;
         $file->fileable_id = $product->id;
-        $file->fileable_type = "App\Product";
+        $file->fileable_type = Product::class;
         $file->original_name = $photo->photo;
         $file->config = $config;
         $file->type_file_id = 2;
@@ -352,7 +352,7 @@ class Photos
       foreach ($products as $product) {
         $file = new File;
         $file->fileable_id = $product->id;
-        $file->fileable_type = "App\Product";
+        $file->fileable_type = Product::class;
         $file->original_name = $photo->photo;
         $file->config = $config;
         $file->type_file_id = 2;
@@ -367,7 +367,7 @@ class Photos
       foreach ($products as $product) {
         $file = new File;
         $file->fileable_id = $product->id;
-        $file->fileable_type = "App\Product";
+        $file->fileable_type = Product::class;
         $file->original_name = $photo->photo;
         $file->config = $config;
         $file->type_file_id = 2;
@@ -383,7 +383,7 @@ class Photos
       foreach ($products as $product) {
         $file = new File;
         $file->fileable_id = $product->id;
-        $file->fileable_type = "App\Product";
+        $file->fileable_type = Product::class;
         $file->original_name = $photo->photo;
         $file->config = $config;
         $file->type_file_id = 2;
@@ -398,7 +398,7 @@ class Photos
       foreach ($products as $product) {
         $file = new File;
         $file->fileable_id = $product->id;
-        $file->fileable_type = "App\Product";
+        $file->fileable_type = Product::class;
         $file->original_name = $photo->photo;
         $file->config = $config;
         $file->type_file_id = 2;
@@ -413,7 +413,7 @@ class Photos
       foreach ($products as $product) {
         $file = new File;
         $file->fileable_id = $product->id;
-        $file->fileable_type = "App\Product";
+        $file->fileable_type = Product::class;
         $file->original_name = $photo->photo;
         $file->config = $config;
         $file->type_file_id = 2;
@@ -490,11 +490,11 @@ class Photos
       if($countGid == 1) {
         $products = Product::whereHas('type_product', function ($query) {
           $query->where('title','Глубинные вибратороы');
-        })->where('producer_type_product_id',17)->get();
+        })->where('line_product_id',17)->get();
         foreach ($products as $product) {
           $file = new File;
           $file->fileable_id = $product->id;
-          $file->fileable_type = "App\Product";
+          $file->fileable_type = Product::class;
           $file->original_name = $photo->photo;
           $file->config = $config;
           $file->type_file_id = 2;
@@ -505,11 +505,11 @@ class Photos
       else {
         $products = Product::whereHas('type_product', function ($query) {
           $query->where('title','Глубинные вибратороы');
-        })->where('producer_type_product_id',18)->get();
+        })->where('line_product_id',18)->get();
         foreach ($products as $product) {
           $file = new File;
           $file->fileable_id = $product->id;
-          $file->fileable_type = "App\Product";
+          $file->fileable_type = Product::class;
           $file->original_name = $photo->photo;
           $file->config = $config;
           $file->type_file_id = 2;

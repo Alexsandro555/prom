@@ -5,9 +5,9 @@ export default {
     [ACTIONS.UPDATE_ITEM]: ({commit}, objField) => {
         commit('SET_ITEM',objField)
     },
-    [ACTIONS.SAVE_DATA]: ({state}) => {
+    [ACTIONS.SAVE_DATA]: ({state, commit}) => {
         groupApi.save(state.items).then(response => {
-
+            commit('RESET_TITLE')
         }).catch(err => {})
     }
 }

@@ -3,7 +3,7 @@
 @section('title', $product->title.' - '.$product->price.'..ПРОМВИБРАТОР.РУ.')
 
 @section('sidebar')
-    @foreach($typeProduct->lineProducts as $lineProduct)
+    @foreach($lineProducts as $lineProduct)
         <div class="content-left-menu">
             <a href="{{$lineProduct->url_key}}" class="partition">{{$lineProduct->title}}</a>
             @foreach($lineProduct->attributes as $attribute)
@@ -16,6 +16,8 @@
             @endforeach
         </div>
     @endforeach
+    <div class="content-left-menu"></div>
+    @include('main.sidebar',['articles' => $articles])
 @stop
 
 @section('content')
@@ -70,7 +72,22 @@
         </div>
         <h2 class="h2-product">Характиристики и описание</h2>
         <div class="content-right-product-select">
+            @foreach($groups as $group)
+                <div class="product-select">
 
+                    <strong>{{$group->title}}</strong>
+                    @foreach($product->attributes as $attribute)
+                        @if($group->id === $attribute->pivot->group_id)
+                            @if($attribute->pivot->value)
+                                <div class="product-select-block">
+                                    <div class="product-select-block-l">{{$attribute->title}}</div>
+                                    <div class="product-select-block-r">{{$attribute->pivot->value}}</div>
+                                    @endif
+                                </div>
+                            @endif
+                            @endforeach
+                </div>
+            @endforeach
         </div>
     </div>
     <a href=""><img src="{{asset('css/images/banner-sale.png')}}" alt="img" class="img-banner"></a>

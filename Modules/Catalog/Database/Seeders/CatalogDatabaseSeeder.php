@@ -24,6 +24,8 @@ class CatalogDatabaseSeeder extends Seeder
         $this->call(AttributesTableSeeder::class);
         $this->call(GroupTableSeeder::class);
         $this->call(VibratorsTableSeeder::class);
+        $this->call(FilesTableSeeder::class);
+        $this->call(VibratorsFigureTableSeeder::class);
         // $this->call("OthersTableSeeder");
     }
 }

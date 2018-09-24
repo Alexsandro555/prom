@@ -7,6 +7,7 @@
       <div class="content-left-menu"><a class="partition" href="/{{$typeProduct->url_key}}/">{{$typeProduct->title}}</a></div>
    @endforeach
    <div class="content-left-menu"></div>
+   @include('main.sidebar',['articles' => $articles])
 @stop
 
 @section('content')

@@ -5,11 +5,14 @@ namespace App\Http\Controllers\main;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Mockery\Exception;
+use Modules\Catalog\Entities\LineProduct;
 use Modules\Catalog\Entities\Product;
 use Modules\Catalog\Entities\TypeProduct;
 use Modules\Catalog\Entities\Group;
 use App\Classes\Breadcrumb;
 use Illuminate\Support\Collection;
+use Modules\Files\Entities\File;
+use Modules\Article\Entities\Article;
 
 class MainController extends Controller
 {
@@ -18,11 +21,13 @@ class MainController extends Controller
     $typeProducts = TypeProduct::all();
     // специальное предложение по товарам
     $products = Product::with(['files','attributes','type_product'])->where('active',1)->where('special',1)->get();
-    return view('main.index',compact('products','typeProducts'));
+    $articles = Article::with('files')->where('news',1)->get();
+    return view('main.index',compact('products','typeProducts', 'articles'));
   }
 
 
   public function catalogTypes($slug, Request $request) {
+    $articles = Article::where('news',1)->get();
     $breadcrumbs = new Collection();
     // Получение детальной карточки товара
     $id = $request->id;
@@ -32,8 +37,12 @@ class MainController extends Controller
         $query->where('url_key',$slug);
       })->where('old_id',$id)->firstOrFail();
       $productId = $product->id;
+      $groups = Group::with('attribute_product')->whereHas('attribute_product', function($query) use ($productId ) {
+        $query->where('product_id',$productId);
+      })->get();
 
       $typeProduct = TypeProduct::with('line_products')->find($product->type_product_id);
+      $lineProducts = LineProduct::where('type_product_id',$product->type_product_id)->get();
       $breadcrumbs->push(new Breadcrumb("Главная страница", "/"));
       $breadcrumbs->push(new Breadcrumb($product->type_product->title, $product->type_product->url_key));
       if($product->line_product)
@@ -41,7 +50,7 @@ class MainController extends Controller
         $breadcrumbs->push(new Breadcrumb($product->line_product->title, $product->type_product->url_key));
       }
       $breadcrumbs->push(new Breadcrumb($product->title, $product->url_key));
-      return view('main.detail', compact('product','typeProduct','breadcrumbs'));
+      return view('main.detail', compact('product','groups','lineProducts', 'typeProduct' ,'breadcrumbs', 'articles'));
     }
     // конец получения детальной карточки товара
 
@@ -80,7 +89,7 @@ class MainController extends Controller
         $breadcrumbs->push(new Breadcrumb("Главная страница", "/"));
         $breadcrumbs->push(new Breadcrumb($typeProduct->title, $typeProduct->url_key));
         $breadcrumbs->push(new Breadcrumb($attribute->title, $attribute->alias));
-        return view('main.catalog', compact('products','typeProduct','breadcrumbs'));
+        return view('main.catalog', compact('products','typeProduct','breadcrumbs', 'articles'));
       }
       $lineProduct = LineProduct::where('url_key',$slug)->first();
       $idTypeProduct = $lineProduct->type_product_id;
@@ -97,7 +106,7 @@ class MainController extends Controller
       $breadcrumbs->push(new Breadcrumb("Главная страница", "/"));
       $breadcrumbs->push(new Breadcrumb($typeProduct->title, $slug));
     }
-    return view('main.catalog', compact('products','typeProduct','breadcrumbs'));
+    return view('main.catalog', compact('products','typeProduct','breadcrumbs', 'articles'));
   }
 
   public function login() {
@@ -128,5 +137,10 @@ class MainController extends Controller
 
   public function catalog($id) {
 
+  }
+
+  public function images($id) {
+    $imageProducts = File::with('typeFile')->where('fileable_id',$id)->where('fileable_type',Product::class)->get();
+    return $imageProducts;
   }
 }

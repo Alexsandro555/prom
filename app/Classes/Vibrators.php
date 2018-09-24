@@ -49,13 +49,13 @@ class Vibrators
         $product->active = 1;
         $product->type_product_id = $pneumaticVibrator->id>50?3:2;
         $product->line_product_id = $arrPneumaticVibratorType["id"];
-        $product->producer_id = 1;
+        //$product->producer_id = 1;
         $product->storage = true;
         $product->guarantee = '12 месяцев';
         $product->old_id = $pneumaticVibrator->id;
         $product->qty = $pneumaticVibrator->onstock;
         $product->figureid = $pneumaticVibrator->figureid;
-        $product->category_id = 1;
+        //$product->category_id = 1;
         $product->typeid = $pneumaticVibrator->typeid;
         $product->dima = $pneumaticVibrator->dima;
         $product->dimb = $pneumaticVibrator->dimb;
@@ -492,12 +492,12 @@ class Vibrators
         //$product->active = $Vibrator->disabled?0:1;
         $product->active = 1;
         $product->type_product_id = 1;
-        $product->producer_type_product_id = $arrVibratorsType["id"];
-        $product->producer_id = 1;
+        $product->line_product_id = $arrVibratorsType["id"];
+        //$product->producer_id = 1;
         $product->storage = true;
         $product->guarantee = '12 месяцев';
         $product->old_id = $Vibrator->id;
-        $product->category_id = 1;
+        //$product->category_id = 1;
         $product->qty  = $Vibrator->onstock;
         $product->figureid = $Vibrator->figureid;
         $product->typeid = $Vibrator->typeid;
@@ -661,7 +661,7 @@ class Vibrators
     $concreteVibratorTypes = ConcreteVibratorType::All();
     $arrConcreteVibratorTypes = [];
     foreach ($concreteVibratorTypes as $concreteVibratorType) {
-      $result = $lineProduct->where('name_line',$concreteVibratorType->name)->first();
+      $result = $lineProduct->where('title',$concreteVibratorType->name)->first();
       $item["old_id"] = $concreteVibratorType->id;
       $item["name"] = $concreteVibratorType->name;
       $item['id'] = $result->id;
@@ -678,12 +678,12 @@ class Vibrators
         $product->price = $concreteVibrator->price;
         $product->active = $concreteVibrator->disabled?0:1;
         $product->type_product_id = 4;
-        $product->producer_type_product_id = $arrConcreteVibratorType["id"];
-        $product->producer_id = 1;
+        $product->line_product_id = $arrConcreteVibratorType["id"];
+        //$product->producer_id = 1;
         $product->storage = true;
         $product->guarantee = '12 месяцев';
         $product->old_id = $concreteVibrator->id;
-        $product->category_id = 1;
+        //$product->category_id = 1;
         $product->qty = $concreteVibrator->onstock;
         $product->typeid = $concreteVibrator->typeid;
         $product->save();

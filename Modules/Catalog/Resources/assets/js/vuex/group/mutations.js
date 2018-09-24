@@ -10,4 +10,7 @@ export default {
     SET_ITEM: (state, payload) => {
         state.items = Object.assign({},state.items, payload)
     },
+    RESET_TITLE: (state) => {
+        state.items.title = ''
+    }
 }

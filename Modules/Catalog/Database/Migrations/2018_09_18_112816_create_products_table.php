@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
       $table->increments('id')->comment('Идентефикатор');
       $table->integer('remote_id')->nullable();
       $table->string('title', 255)->comment('Название продукта');
-      $table->string('url_key', 255)->unique()->comment('url');
+      $table->string('url_key', 255)->comment('url');
       $table->decimal('price',10,2)->comment('Цена');
       $table->text('description')->nullable()->comment('Описание');
       $table->integer('qty')->nullable()->comment('количество');
@@ -39,6 +39,18 @@ class CreateProductsTable extends Migration
       $table->integer('old_id')->nullable();
       $table->integer('figureid')->nullable();
       $table->integer('typeid')->nullable();
+      $table->string('dima')->nullable();
+      $table->string('dimb')->nullable();
+      $table->string('dimc')->nullable();
+      $table->string('dimd')->nullable();
+      $table->string('dime')->nullable();
+      $table->string('dimf')->nullable();
+      $table->string('dimh')->nullable();
+      $table->string('dimg')->nullable();
+      $table->string('dimi')->nullable();
+      $table->string('diml')->nullable();
+      $table->string('dimm')->nullable();
+      $table->string('dimn')->nullable();
       $table->decimal('special_price',10,2)->nullable();
       $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
       $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));

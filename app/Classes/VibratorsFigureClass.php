@@ -8,8 +8,8 @@
 
 namespace App\Classes;
 
-use App\Product;
-use Leader\UploadFile\Models\File;
+use Modules\Catalog\Entities\Product;
+use Modules\Files\Entities\File;
 use App\VibratorsFigure;
 use Illuminate\Support\Facades\Storage;
 

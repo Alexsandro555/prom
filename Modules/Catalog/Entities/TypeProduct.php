@@ -36,7 +36,6 @@ class TypeProduct extends Model
     return $this->hasMany(LineProduct::class);
   }
 
-
   /*public function files() {
     return $this->morphMany('Leader\UploadFile\Models\File', 'fileable');
   }*/
